@@ -1,0 +1,25 @@
+{% extends 'app_blog/base.html' %}
+
+{% block title %}
+Edit the blog post..
+{% endblock %}
+
+{% block content %}
+
+<h1>Update Post</h1>
+
+<div class="form-group">
+<form method="POST">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-secondary">Update</button>
+
+</form>
+</div>
+
+
+
+
+
+{% endblock %}
