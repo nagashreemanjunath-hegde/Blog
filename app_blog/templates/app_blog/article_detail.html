@@ -7,7 +7,10 @@
 {% block content %}
 
 <h2>{{ post.title }}</h2>
-<small>By: {{ post.author }} <a href="{% url 'update-post' post.pk %}">Edit</a></small>
+<small>By: {{ post.author }} <a href="{% url 'update-post' post.pk %}" class="btn btn-secondary">Edit</a>
+
+                             <a href="{% url 'delete-post' post.pk %}" class="btn btn-secondary">Delete</a>
+</small>
 <hr>
 {{ post.body }}
 <br>
@@ -15,6 +18,6 @@
 {{ post.created }}
 <br>
 <br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'home' %}" class="btn btn-info">Back</a>
 
 {% endblock %}
