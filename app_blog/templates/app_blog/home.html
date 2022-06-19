@@ -6,11 +6,16 @@
 <ul>
 {% for post in object_list %}
     <li><a href="{% url 'article-detail' post.pk %}" class="btn btn-info">{{ post.title }}</a> - 
-        {{ post.author }} - 
-        <a href="{% url 'update-post' post.pk %}" class="btn btn-secondary">Edit</a>
+        {{ post.author }} 
+
+
+        {% if user.is_authenticated %}
+       - <a href="{% url 'update-post' post.pk %}" class="btn btn-secondary">Edit</a>
         <a href="{% url 'delete-post' post.pk %}" class="btn btn-secondary">Delete</a>
         
         <br>
+        {% endif %}
+
      {{ post.body }} <br>
      {{ post.created }} </li>
      <br>
