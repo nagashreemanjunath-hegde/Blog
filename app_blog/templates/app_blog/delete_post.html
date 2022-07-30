@@ -6,6 +6,8 @@ Delete the blog post..
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Delete Post</h1>
 <br><br>
 <h3>Delete:{{ post.title }}</h3>
@@ -25,6 +27,11 @@ Delete the blog post..
 </form>
 </div>
 
+{% else %}
+
+ <strong>You are not allow to upadte the post!!!</strong>
+
+ {% endif %}
 
 
 

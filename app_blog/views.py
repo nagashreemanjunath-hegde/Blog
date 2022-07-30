@@ -1,7 +1,7 @@
 from dataclasses import field
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
-from app_blog.models import Post
+from app_blog.models import Post, Category
 from .forms import PostForm,EditForm
 from django.urls import reverse_lazy
 # Create your views here.
@@ -24,6 +24,13 @@ class AddPostView(CreateView):
     form_class= PostForm
     template_name='app_blog/add_post.html'
     #fields='__all__'
+    #fields=('title','body')
+
+class AddCategoryView(CreateView):
+    model=Category
+    #form_class= PostForm
+    template_name='app_blog/add_category.html'
+    fields='__all__'
     #fields=('title','body')
 
 class UpdatePostView(UpdateView):
