@@ -44,5 +44,5 @@ class DeletePostView(DeleteView):
     success_url=reverse_lazy('home')
 
 def CategoryView(request,cats):
-    category_posts=Post.objects.filter(category=cats)
-    return render(request, 'app_blog/categories.html', {'cats':cats, 'category_posts':category_posts})    
+    category_posts=Post.objects.filter(category=cats.replace('-',' '))
+    return render(request, 'app_blog/categories.html', {'cats':cats.replace('-',' '), 'category_posts':category_posts})    

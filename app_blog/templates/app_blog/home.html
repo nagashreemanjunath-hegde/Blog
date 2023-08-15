@@ -6,6 +6,7 @@
 <ul>
 {% for post in object_list %}
     <li><a href="{% url 'article-detail' post.pk %}" class="btn btn-info">{{ post.title }}</a> - 
+        <a href="{% url 'category' post.category|slugify %}" class="btn btn-info">{{ post.category }}</a>
         {{ post.author }} 
 
 
