@@ -8,24 +8,26 @@ Edit the blog post..
 
 {% if user.is_authenticated %}
 
-<h1>Update Post</h1>
+    {% if user.id == post.author.id %}
 
-<div class="form-group">
-<form method="POST">
+        <h1>Update Post</h1>
+        <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Update</button>
+        </form>
+        </div>
+    {% else %} 
+        <strong>You are not allow to upadte the post!!!</strong>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-secondary">Update</button>
-
-
-</form>
-</div>
+    {% endif %}    
 
 {% else %}
 
  <strong>You are not allow to upadte the post!!!</strong>
 
- {% endif %}
+{% endif %}
 
 
 

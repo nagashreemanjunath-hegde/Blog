@@ -7,25 +7,27 @@ Delete the blog post..
 {% block content %}
 
 {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
 
-<h1>Delete Post</h1>
-<br><br>
-<h3>Delete:{{ post.title }}</h3>
+        <h1>Delete Post</h1>
+        <br><br>
+        <h3>Delete:{{ post.title }}</h3>
+        <div class="form-group">
+        <form method="POST">
 
+            {% csrf_token %}
+            <strong>Are you sure?!!!!</strong>
+            <br><br>
+            <button class="btn btn-secondary">Delete</button>
 
-<div class="form-group">
-<form method="POST">
+        </form>
+        </div>
 
-    {% csrf_token %}
-    <strong>Are you sure?!!!!</strong>
-
-    <br>
-    <br>
+    {% else %}  
     
-    <button class="btn btn-secondary">Delete</button>
-
-</form>
-</div>
+        <strong>You are not allow to upadte the post!!!</strong>
+        
+    {% endif %}    
 
 {% else %}
 

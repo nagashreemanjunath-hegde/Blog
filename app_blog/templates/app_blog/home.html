@@ -11,10 +11,12 @@
 
 
         {% if user.is_authenticated %}
+            {% if user.id == post.author.id %}
        - <a href="{% url 'update-post' post.pk %}" class="btn btn-secondary">Edit</a>
         <a href="{% url 'delete-post' post.pk %}" class="btn btn-secondary">Delete</a>
         
         <br>
+            {% endif %}
         {% endif %}
 
      {{ post.body }} <br>
