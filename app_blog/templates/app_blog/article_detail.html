@@ -8,8 +8,6 @@
 
 {% block content %}
 
-<h5>current-user : {{ user.id }}</h5>
-<h5>post-author : {{ post.author.id }}</h5>
 </br>
 
 <h2>{{ post.title }}</h2>
@@ -31,5 +29,32 @@
 <br>
 <br>
 <a href="{% url 'home' %}" class="btn btn-info">Back</a>
+
+<br><br>
+<form action = "{% url 'like-post' post.pk %}" method = "POST">
+    {% csrf_token %}
+
+    {% if user.is_authenticated %}
+
+        {% if liked %}
+
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger btn sm">
+        UnLike</button>
+
+        {% else %}
+
+        <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btn sm">
+        Like</button>
+        
+        {% endif %}
+
+    {% else %}  
+
+        <small><a class="nav-link" href="{% url 'login' %}">LogIn</a>Must be logged in to Like</small>
+    
+    {% endif %}    
+
+    - {{ total_likes }} Likes
+</form>
 
 {% endblock %}
