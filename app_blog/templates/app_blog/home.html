@@ -18,8 +18,9 @@
         <br>
             {% endif %}
         {% endif %}
-
-     {{ post.body }} <br>
+  
+     {{ post.snippet }}   <br>
+     <!-- {{ post.body|safe }} <br> -->
      {{ post.created }} </li>
      <br>
 {% endfor%}
